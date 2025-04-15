@@ -1,6 +1,6 @@
 // lib/core/theme/app_theme.dart
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide WidgetState, MaterialState;
 
 class AppColors {
   // Primary and secondary colors
@@ -111,10 +111,8 @@ class AppTheme {
       onSecondary: Colors.white,
       error: AppColors.errorColor,
       onError: Colors.white,
-      background: AppColors.backgroundColor,
-      onBackground: AppColors.textPrimary,
       surface: AppColors.surfaceColor,
-      onSurface: AppColors.textPrimary,
+      onSurface: AppColors.textPrimary
     ),
     scaffoldBackgroundColor: AppColors.backgroundColor,
     textTheme: const TextTheme(
@@ -194,15 +192,13 @@ class AppTheme {
     useMaterial3: true,
     colorScheme: ColorScheme(
       brightness: Brightness.dark,
-      primary: AppColors.primaryColor.withOpacity(0.8),
+      primary: AppColors.primaryColor.withAlpha(204),
       onPrimary: Colors.white,
-      secondary: AppColors.tealAccent.withOpacity(0.8),
-      onSecondary: Colors.white,
+      secondary: AppColors.tealAccent.withAlpha(204),
+      onSecondary: Colors.white, 
       error: AppColors.errorColor,
       onError: Colors.white,
-      background: const Color(0xFF121212),
-      onBackground: Colors.white,
-      surface: const Color(0xFF1E1E1E),
+      surface: const Color(0xFF121212),
       onSurface: Colors.white,
     ),
     scaffoldBackgroundColor: const Color(0xFF121212),
@@ -219,7 +215,7 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: AppColors.primaryColor.withOpacity(0.8),
+        backgroundColor: AppColors.primaryColor.withAlpha(204),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -247,7 +243,7 @@ class AppTheme {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryColor.withOpacity(0.8)),
+        borderSide: BorderSide(color: AppColors.primaryColor.withAlpha(204)),
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
@@ -269,7 +265,7 @@ class AppTheme {
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: const Color(0xFF1E1E1E),
-      selectedItemColor: AppColors.primaryColor.withOpacity(0.8),
+      selectedItemColor: AppColors.primaryColor.withAlpha(204),
       unselectedItemColor: Colors.white70,
       showSelectedLabels: true,
       showUnselectedLabels: true,

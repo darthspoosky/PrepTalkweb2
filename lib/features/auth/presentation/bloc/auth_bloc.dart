@@ -21,29 +21,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthState.loading());
-    
-    // Here you would typically check if the user is already logged in
+
+    // Check if the user is already logged in
     // For now, we'll just simulate this with a delay
     await Future.delayed(const Duration(seconds: 1));
-    
+
     // For demo purposes, start unauthenticated
     emit(const AuthState.unauthenticated());
   }
 
-  Future<void> _onLogin(
-    AuthEventLogin event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onLogin(AuthEventLogin event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
-    
+
     try {
       // Here you would typically implement actual login logic
       // For now, we'll just simulate this with a delay
       await Future.delayed(const Duration(seconds: 1));
-      
+
       // Check if onboarding is completed
-      final bool onboardingCompleted = true; // This would come from a repository
-      
+      const bool onboardingCompleted =
+          true; // This would come from a repository
+
       if (onboardingCompleted) {
         emit(const AuthState.authenticated());
       } else {
@@ -54,17 +52,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onSignup(
-    AuthEventSignup event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onSignup(AuthEventSignup event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
-    
+
     try {
       // Here you would typically implement actual signup logic
       // For now, we'll just simulate this with a delay
-      await Future.delayed(const Duration(seconds: 1));
-      
+      await Future.delayed(const Duration(milliseconds: 500));
+
       // After signup, user needs to complete onboarding
       emit(const AuthState.needsOnboarding());
     } catch (e) {
@@ -72,17 +67,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onLogout(
-    AuthEventLogout event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onLogout(AuthEventLogout event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
-    
+
     try {
       // Here you would typically implement actual logout logic
       // For now, we'll just simulate this with a delay
-      await Future.delayed(const Duration(seconds: 1));
-      
+      await Future.delayed(const Duration(milliseconds: 500));
+
       emit(const AuthState.unauthenticated());
     } catch (e) {
       emit(AuthState.error(message: e.toString()));
@@ -94,12 +86,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthState.loading());
-    
+
     try {
       // Here you would typically save onboarding completion status
       // For now, we'll just simulate this with a delay
       await Future.delayed(const Duration(seconds: 1));
-      
+
       emit(const AuthState.authenticated());
     } catch (e) {
       emit(AuthState.error(message: e.toString()));
